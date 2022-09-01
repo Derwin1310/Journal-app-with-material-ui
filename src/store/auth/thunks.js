@@ -35,10 +35,10 @@ export const startLoginWithEmail = (email, password) => {
   return async (dispatch) => {
     dispatch(checkingCredentials())
 
-    const resp = await loginWithEmail({ email, password })
-    console.log(resp);
-    if(!resp.ok) return dispatch(logout(resp.errorMessage))
+    const { ok, uid, photoURL, displayName, errorMessage  } = await loginWithEmail({ email, password })
 
-    dispatch(login(resp))
+    if(!ok) return dispatch(logout({ errorMessage }))
+
+    dispatch(login({ uid, displayName, email, photoURL }))
   }
 }

@@ -22,20 +22,12 @@ export const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    // console.log({email, password})
     dispatch(chekingAuthentication())
   }
 
-  const onGoogleSignIn = () => {
-    console.log('google sign in');
-    dispatch(startGoogleSignIn())
-  }
+  const onGoogleSignIn = () => dispatch(startGoogleSignIn())
 
-  const onEmailSignIn = () => {
-    // console.log(email);
-    dispatch(startLoginWithEmail(email, password))
-  }
-  // console.log(errorMessage);
+  const onEmailSignIn = () => dispatch(startLoginWithEmail(email, password))
 
 	return (
 		<AuthLayout title="Login">
@@ -67,6 +59,7 @@ export const Login = () => {
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
+
             <Grid item xs={12} sm={6}>
               <Button
                 variant='contained'
@@ -90,7 +83,9 @@ export const Login = () => {
                   <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
             </Grid>
+
           </Grid>
+
           <Grid item xs={12} sm={6} display={!!errorMessage ? '' : 'none'}>
               <Alert severity="error" >{errorMessage}</Alert>
           </Grid>
@@ -104,6 +99,5 @@ export const Login = () => {
         </Grid>
       </form>
     </AuthLayout>
-
 	)
 }
