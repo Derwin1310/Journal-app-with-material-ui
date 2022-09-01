@@ -7,7 +7,6 @@ export const Journal = () => {
   return (
     <JournalStyles>
       <NothigSelectedView />
-      {/* <NoteView /> */}
 
       <IconButton
         size='large'
